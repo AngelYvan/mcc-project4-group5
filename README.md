@@ -1,6 +1,6 @@
 # Maestria en Ciencias de la Computación - UNSA
 ## Grupo V - Practica 4
-## Tema: Kdetree
+## Tema: Kdtree
 
 ##  Integrantes
 - Angel Yvan Choquehuanca Peraltilla
