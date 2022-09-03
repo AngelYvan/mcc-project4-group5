@@ -19,15 +19,14 @@ data.push ([x, y]) ;
 fill (255 , 255 , 255) ;
 circle (x, height - y, 7) ; // 200 -y para q se dibuje apropiadamente
 textSize (8) ;
-text (x + ',' + y, x + 5, height - y);// 200 -y para q se dibuje
-apropiadamente
+text (x + ',' + y, x + 5, height - y);// 200 -y para q se dibuje apropiadamente
 }
 var root = build_kdtree ( data ) ;
 console.log ( root );
 }
 k = 2;
 
-class Node {
+class Node1 {
 constructor (point , axis ){
 this.point = point;
 this.left = null;
