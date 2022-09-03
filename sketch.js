@@ -26,15 +26,6 @@ console.log ( root );
 }
 k = 2;
 
-class Node1 {
-constructor (point , axis ){
-this.point = point;
-this.left = null;
-this.right = null;
-this.axis = axis;
-}
- }
-
 function distanceSquared ( point1 , point2 ){
 var distance = 0;
 for (var i = 0; i < k; i ++)
