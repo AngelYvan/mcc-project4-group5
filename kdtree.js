@@ -1,89 +1,48 @@
-class Point {
-constructor (x, y, userData ){
-    this.x = x;
-    this.y = y;
-    this.userData = userData;
-        }
+k = 2;
+
+class Node {
+    constructor(point, axis) {
+        this.point = point;
+        this.left = null;
+        this.right = null;
+        this.axis = axis;
     }
-    
-    class Rectangle {
-    constructor (x, y, w, h) {
-    this.x = x; // center
-    this.y = y;
-    this.w = w; // half width
-    this.h = h; // half height
-        }
-    
-    // verifica si este objeto contiene un objeto Punto
-    contains ( point ){
-    
-        }
-    
-    // verifica si este objeto se intersecta con otro objeto Rectangle
-    intersects ( range ){
-    
-        }
+}
+
+function getHeight(node) {
+
+}
+function generate_dot(node) {
+
+}
+function build_kdtree(points, depth = 0) {
+    var n = points.length;
+    var axis = depth % k;
+
+
+    if (n <= 0) {
+        return null;
+    }
+    if (n == 1) {
+        return new Node(points[0], axis)
     }
 
+    var median = Math.floor(points.length / 2);
 
-    class QuadTree {
-   constructor ( boundary , n){
-    this.boundary = boundary; // Rectangle
-    this.capacity = n; // capacidad maxima de cada cuadrante
-    this.points = []; // vector , almacena los puntos a almacenar
-    this.divided = false;
-    }
-    
-    // divide el quadtree en 4 quadtrees
-    subdivide () {
-    // Algoritmo
-    // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,
-        
-        qt_southwest
+    // sort by the axis
+    points.sort(function (a, b) {
+        return a[axis] - b[axis];
+    });
+    //console.log(points);
 
-        // 2: Asignar los QuadTree creados a cada hijo
-// this.northeast = qt_northeast;
-// this.northwest = qt_northwest;
-// this.southeast = qt_southeast;
-// this.southwest = qt_southwest;
+    var left = points.slice(0, median);
+    var right = points.slice(median + 1);
 
-// 3.- Hacer: this.divided <- true
-}
+    //console.log(right);
 
-insert ( point ){
-// Algoritmo
-// 1: Si el punto no esta en los limites ( boundary ) del quadtree Return
+    var node = new Node(points[median].slice(0, k), axis);
+    node.left = build_kdtree(left, depth + 1);
+    node.right = build_kdtree(right, depth + 1);
 
-// 2: Si ( this.points.length ) < ( this.capacity ),
-// 2.1 Insertamos en el vector this.points
-// Sino
-// 2.2 Dividimos si aun no ha sido dividido
-// 2.3 Insertamos recursivamente en los 4 hijos.
-// this.northeast.insert ( point );
-// this.northwest.insert ( point );
-// this.southeast.insert ( point );
-// this.southwest.insert ( point );
-
-}
-
-show () {
-stroke (255) ;
-strokeWeight (1) ;
-noFill () ;
-rectMode ( CENTER );
-rect ( this.boundary.x , this.boundary.y , this.boundary.w *2 , this.boundary.h
-
-*2) ;
-if( this.divided ) {
-this.northeast.show () ;
-this.northwest.show () ;
-this.southeast.show () ;
-this.southwest.show () ;
-}
-
-for (let p of this.points ){
-strokeWeight (4) ;
-point (p.x , p.y );
-}
-}
+    return node;
 }
