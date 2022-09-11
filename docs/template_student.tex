@@ -268,7 +268,7 @@ function setup() {
 
 \end{lstlisting}
 
-Tarea 4: Implemente la funcion closest point brute force y naive closest point :
+Tarea 4: Implemente la funcion closest point brute force y naive closest point.
 \begin{lstlisting}[style=C]
 function closest_point_brute_force(points, point) { 
     var nearPoints = points[0];
@@ -304,7 +304,7 @@ function naive_closest_point(node, point, depth = 0, best = null) {
 }
 \end{lstlisting}
 
-Tarea  5:Evalue el resultado de las dos funciones implementadas anteriormente con este conjunto de datos
+Tarea 5: Evalue el resultado de las dos funciones implementadas anteriormente con este conjunto de datos.
 
 \begin{lstlisting}[style=C]
 vardata=[
@@ -318,7 +318,7 @@ vardata=[
 var point=[140 ,90];//query
 \end{lstlisting}
 
-Tarea 6: Evalue el resultado de las dos funciones implementadas anteriormente con este conjunto de datos:
+Tarea 6: Evalue el resultado de las dos funciones implementadas anteriormente con este conjunto de datos.
 \begin{lstlisting}[style=C]
 vardata=[
   [40,70],
@@ -332,7 +332,7 @@ vardata=[
 var point=[140 ,90];//query
 \end{lstlisting}
 
-Tarea 7: Ahora implemente la funcion closest point, siguiendo las recomendaciones dadas por el docente
+Tarea 7: Ahora implemente la funcion closest point, siguiendo las recomendaciones dadas por el docente.
 \begin{lstlisting}[style=C]
 function closest_point(node, point, depth = 0) {
 
@@ -443,8 +443,148 @@ function range_query_rect(node , rect , found , depth = 0) {
 }
 \end{lstlisting}
 
-\section{Resultados}
 
+\section{Resultados}
+Tarea 2: Cree un archivo kdtree.js.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado2.jpg}
+\caption{Resultados por consola}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado2.1.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 3: Cree un archivo sketch.js y evalue sus resultados.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado3.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 5: Evalue el resultado de las dos funciones implementadas anteriormente con este conjunto de datos
+Se ingresaron los datos sugeridos por la practica y se evaluó los resultados.
+\begin{lstlisting}[style=C]
+vardata=[
+  [40,70],
+  [70 ,130],
+  [90,40],
+  [110, 100],
+  [140 ,110],
+  [160, 100]
+  ];
+var point=[140 ,90];//query
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado5.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 6: Evalue el resultado de las dos funciones implementadas anteriormente con este conjunto de datos.
+Se ingresaron los datos sugeridos por la practica y se evaluó los resultados.
+\begin{lstlisting}[style=C]
+vardata=[
+  [40,70],
+  [70 ,130],
+  [90,40],
+  [110, 100],
+  [140 ,110],
+  [160, 100],
+  [150, 30],
+  ];
+var point=[140 ,90];//query
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado6.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 7: Ahora implemente la funcion closest point, siguiendo las recomendaciones dadas por el docente.
+Reconoce el punto mas cercano.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado7.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 8: Averigue e implemente una funcion KNN, que retorna los k puntos mas cercanos a un punto.
+Muestra y reconoce los 4 puntos mas cercanos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado8.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 9: Implemente la funcion range query circle del KD-Tree.
+Grafica un circulo y reconoce los puntos  dentro de el, en el sketch se define el area de consulta.
+
+\begin{lstlisting}[style=C]
+var found = [];
+	var pon = [140, 100];
+	var radio = 90;
+
+    range_query_circle(root,pon,radio,found);
+    console.log(found);
+	fill(0, 0, 255, 40);
+	circle(pon[0], height - pon[1], radio * 2);
+    for ( let i = 0; i < found.length; i ++) {
+        var x = found[i][0];
+        var y = found[i][1];
+        fill (0 , 0 , 255);
+        circle (x, height - y, 7); 
+    }
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado9.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
+
+Tarea 10: Implemente la funcion range query rec del KD-Tree, esta vez el range representa un rectangulo.
+
+Grafica un rectangulo y reconoce los puntos  dentro de el, en el sketch se define el area de consulta (Rectangulo o  en nuestro caso un cuadrado).
+
+\begin{lstlisting}[style=C]
+stroke(0,0,255);
+    rectMode(CENTER);
+    fill(0, 0, 255, 40);
+    var rectWidth = 100
+    var rectHeight = 100
+
+    let center = [140,100];
+    rect(center[0], center[1], rectWidth, rectHeight);
+    var xMin = center[0] - rectWidth/2;
+    var yMin = height - (center[1] + rectHeight/2);
+    var xMax = center[0] + rectWidth/2;
+    var yMax = height - (center[1] - rectHeight/2);
+
+    let found = []
+    var rectangle = [[xMin, xMax], [yMin, yMax]]
+    range_query_rect(root, rectangle, found)
+    console.log(found)
+    for ( let i = 0; i < found.length; i ++) {
+        var x = found[i][0];
+        var y = found[i][1];
+        fill (0 , 0 , 255);
+        circle (x, height - y, 7); 
+    }
+\end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{img/Resultado10.jpg}
+\caption{Vizualización de Resultados}
+\end{figure}
 
 
 \section{Conclusiones}
