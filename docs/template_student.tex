@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{url}
 
+
 %% \usepackage{cite}
 \usepackage{hyperref}
 \usepackage{array}
@@ -15,7 +16,13 @@
 \usepackage{float}
 \usepackage[normalem]{ulem}
 \useunder{\uline}{\ul}{}
+\usepackage{listings}
 
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{times}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -52,6 +59,47 @@
 \fancyfoot[L]{MSc. Vicente Machaca}
 \fancyfoot[C]{\cscurso}
 \fancyfoot[R]{Página \thepage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% inicio  de codigo 
+\usepackage{color}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\usepackage{listings}
+\lstset{ frame=Ltb,
+framerule=0pt,
+aboveskip=0.5cm,
+framextopmargin=3pt,
+framexbottommargin=3pt,
+framexleftmargin=0.4cm,
+framesep=0pt,
+rulesep=.4pt,
+backgroundcolor=\color{gray97},
+rulesepcolor=\color{black},
+%
+stringstyle=\ttfamily,
+showstringspaces = false,
+basicstyle=\small\ttfamily,
+commentstyle=\color{gray45},
+keywordstyle=\bfseries,
+%
+numbers=left,
+numbersep=15pt,
+numberstyle=\tiny,
+numberfirstline = false,
+breaklines=true,
+}
+
+% minimizar fragmentado de listados
+\lstnewenvironment{listing}[1][]
+{\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+
+\lstdefinestyle{consola}
+{basicstyle=\scriptsize\bf\ttfamily,
+backgroundcolor=\color{gray75},
+}
+
 
 \begin{document}
 	
@@ -106,25 +154,18 @@
 	%\bibliographystyle{IEEEtranN}
 	%\bibliography{bibliography}
 		
-
-\section{Introducción}
-
-
-
-    
+  
 \section{Marco Teorico}
 
 \subsection{Concepto}
-Un Arbol KD ( o KD Tree) es una estructura de datos de particionado del espacio que organiza los puntos en un Espacio euclídeo de k dimensiones.
+El árbol k -d es un árbol binario en el que cada nodo es un punto k -dimensional. Se puede pensar que cada nodo que no es una hoja genera implícitamente un hiperplano de división que divide el espacio en dos partes, conocidas como medios espacios . Los puntos a la izquierda de este hiperplano están representados por el subárbol izquierdo de ese nodo y los puntos a la derecha del hiperplano están representados por el subárbol derecho. La dirección del hiperplano se elige de la siguiente manera: cada nodo en el árbol está asociado con uno de los kdimensiones, con el hiperplano perpendicular al eje de esa dimensión. Entonces, por ejemplo, si para una división particular se elige el eje "x", todos los puntos en el subárbol con un valor "x" más pequeño que el nodo aparecerán en el subárbol izquierdo y todos los puntos con un valor "x" más grande aparecerán. estar en el subárbol derecho. En tal caso, el hiperplano estaría fijado por el valor x del punto, y su normal sería el eje x unitario.
 
 \subsection{Particionado}
 Un árbol kd emplea sólo planos perpendiculares a uno de los ejes del sistema de coordenadas. 
 Todos los nodos de un árbol kd, desde el nodo raíz hasta los nodos hoja, almacenan un punto.
 Cada plano debe pasar a través de uno de los puntos del árbol kd.
 
-\section{Metodologia y Desarrollo}
 
-Se realizará una app que permita el desarrollo del algoritmo Kdtree. 
 
 
 
